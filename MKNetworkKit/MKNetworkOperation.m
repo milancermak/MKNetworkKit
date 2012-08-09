@@ -289,7 +289,8 @@
 
 -(BOOL) isEqual:(id)object {
   
-  if([self.request.HTTPMethod isEqualToString:@"GET"] || [self.request.HTTPMethod isEqualToString:@"HEAD"]) {
+  if(([self.request.HTTPMethod isEqualToString:@"GET"] || [self.request.HTTPMethod isEqualToString:@"HEAD"]) &&
+     [object isKindOfClass:[self class]]) {
     
     MKNetworkOperation *anotherObject = (MKNetworkOperation*) object;
     return ([[self uniqueIdentifier] isEqualToString:[anotherObject uniqueIdentifier]]);
